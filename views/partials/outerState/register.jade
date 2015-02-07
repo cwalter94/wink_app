@@ -1,0 +1,32 @@
+#register-container
+    .bg-cover
+        .container
+            .row
+                .col-md-6.col-md-offset-3.col-sm-12.col-sm-offset-0
+                    .form-container.clearfix
+                        form(name='formData', ng-submit="submitForm(formData)")
+                            .col-xs-12
+                                .row
+                                    .col-xs-3.col-xs-offset-1
+                                        label.input-lg First Name
+                                    .col-xs-7
+                                        input.email.input-lg.form-control(ng-model='formData.firstName')
+                                .row
+                                    .col-xs-3.col-xs-offset-1
+                                        label.input-lg Last Name
+                                    .col-xs-7
+                                        input.password.input-lg.form-control(ng-model='formData.lastName')
+                                .row
+                                    .col-xs-3.col-xs-offset-1
+                                        label.input-lg Email
+                                    .col-xs-7
+                                        input.email.input-lg.form-control(ng-model='formData.email')
+                                .row
+                                    .col-xs-3.col-xs-offset-1
+                                        label.input-lg Password
+                                    .col-xs-7
+                                        input.password.input-lg.form-control(ng-model='formData.password', type="password")
+                                .row
+                                    .col-xs-3.col-xs-offset-8
+                                        button.btn.btn-login(type="submit") Register
+

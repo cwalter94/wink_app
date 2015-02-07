@@ -1,0 +1,140 @@
+@import "../public/bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap";
+@import "bootstrap_overrides";
+
+
+html {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+
+  body {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+
+    .site-container {
+      width: 100%;
+      height: 100%;
+
+      .page-container {
+        padding-top: 50px;
+        background: url('/img/homebg.jpg');
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position:center;
+        width: 100%;
+
+        .bg-cover {
+          height: 100%;
+          width: 100%;
+          background: rgba(255, 255, 255, .5);
+        }
+
+
+        #dashboard-container {
+          .bg-cover {
+            background: rgba(255, 255, 255, 1);
+          }
+
+          .container {
+            height: 100%;
+
+            >.row {
+              height: 100%;
+
+              .plugs-container {
+                min-height: 500px;
+              }
+
+              .banks-container {
+                min-height: 500px;
+              }
+            }
+          }
+        }
+        #login-container, #register-container {
+          height: 100%;
+
+
+
+          .form-container {
+            width: 100%;
+            height: auto;
+            min-height: 250px;
+            padding-top: 50px;
+            margin-top: 100px;
+            background: #fff;
+            border: 1px solid $main-pink;
+
+              .btn-login {
+                margin: 20px auto;
+                border: 1px solid #ccc;
+                border-radius: 2px;
+                width: 100%;
+                height: 50px;
+                font-size: 18px;
+                color: #fff;
+
+                &:hover {
+                  border: 1px solid $main-pink;
+                  color: $main-pink;
+                }
+              }
+          }
+
+
+        }
+        #home-container {
+          height: 100%;
+
+          .bg-cover {
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, .5);
+          }
+
+          .home-headline {
+            width: 100%;
+            color: $main-blue;
+            font-size: 3em;
+            font-weight: 300;
+            letter-spacing: .06em;
+            height: auto;
+            margin: 50px auto;
+          }
+
+          p.home-description {
+            font-size: 1.5em;
+            letter-spacing: .02em;
+            width: 70%;
+            margin: auto;
+            color: #777;
+          }
+        }
+      }
+
+      .navbar {
+        background: #fff;
+
+        li {
+          a {
+            color: $main-pink;
+          }
+        }
+        .navbar-brand {
+          color: $main-pink;
+        }
+      }
+    }
+
+
+  }
+
+  a {
+    cursor: pointer;
+  }
+}
