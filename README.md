@@ -20,5 +20,8 @@ template files are retrieved through a call to <code> /partials </code>, where E
 <p> The Angular app is contained within the <code>/public/js/angular</code> directory. The main file is <code>ngApp.js</code>, and all controllers are pulled in via UI-router from the <code>/controllers</code> directory. Services/factories are contained in the <code>/services</code> directory, and they are intended to organize API calls and hold data that persists between pages. Since this app has so few pages, and because data persistence is not prioritized, their use is minimal.</p>
 
 
+<h3> Authentication and Security </h3>
+<p> User login and registration is handled through the Wink API, by calling the relevant functions in the <code>principal</code> factory. The access_token is then stored until the user does a hard-refresh or page-closure, at which point they need to authenticate again (to avoid this re-auth procedure, a simple $cookieStore could be used to store auth data in user cookies).</p>
 
+<p> Currently the WINK client_id and client_secret are stored on the front-end, in plain sight. This is not ideal, but for a demo it suffices. Ideally the authentication procedure would be handled on the back-end, which the Angular app could call with simple <code>/api/auth</code> routes. </p>
 
