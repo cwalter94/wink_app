@@ -70,13 +70,13 @@ var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate
                 }
 
             })
-            .state('site.auth.dashboard', {
+            .state('site.dashboard', {
                 url: '/dashboard',
                 templateUrl: '/partials/outer/dashboard',
                 resolve: {
-                    plugs: ['userFactory', function(userFactory) {
-                        return userFactory.getPlugs().then(function(plugs) {
-                            return plugs;
+                    powerstrips: ['userFactory', function(userFactory) {
+                        return userFactory.getPowerstrips().then(function(powerstrips) {
+                            return powerstrips;
                         }, function(err) {
                             console.log(err);
                             return null;
@@ -204,20 +204,25 @@ var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate
         }
     ])
     .factory('userFactory', function($http, $q, WINK) {
-        var _plugs = null, _banks = null;
+        var _plugs = null, _powerstrips = null, _banks = null;
+
         return {
-            getPlugs: function() {
+            getPowerstrips: function() {
                 var deferred = $q.defer();
 
-                if (_plugs) {
-                    deferred.resolve(_plugs);
+                if (_powerstrips) {
+                    deferred.resolve(_powerstrips);
                 }
                 $http({
-                    url: WINK.api + 'users/me/outlets',
+                    url: WINK.api + '/users/me/powerstrips',
                     method: 'GET'
                 }).success(function(response) {
-                    console.log(response);
-                    deferred.resolve(response.data);
+                    _powerstrips = [];
+                    for (var i = 0; i < response.data.powerstrips.length; i++) {
+                        _powerstrips.push(response.data.powerstrips[i]);
+                    }
+                    deferred.resolve(_powerstrips);
+
                 }).error(function(err) {
                     console.log(err);
                     deferred.reject(err);
@@ -232,7 +237,7 @@ var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate
                 }
 
                 $http({
-                    url: WINK.api + 'users/me/piggy_banks',
+                    url: WINK.api + '/users/me/piggy_banks',
                     method: 'GET'
                 }).success(function(response) {
                     console.log(response);
@@ -242,15 +247,22 @@ var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate
                     deferred.reject(err);
                 });
                 return deferred.promise;
+            },
+            addPowerstrip: function(powerstrip) {
+                var deferred = $q.defer();
+                _powerstrips.push(powerstrip);
+                deferred.resolve(_powerstrips);
+                return deferred.promise;
             }
         }
     })
+
     .factory('authInterceptor', function ($rootScope, $q, WINK) {
         return {
             request: function (config) {
 
                 config.headers = config.headers || {};
-                config.headers.Authorization = 'Bearer ' + WINK.auth_token;
+                config.headers.Authorization = 'Bearer ' + WINK.access_token;
                 return config;
             },
             response: function (response) {

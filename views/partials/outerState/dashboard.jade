@@ -3,17 +3,48 @@
         .container
             .row
                 .col-md-4
-                    .plugs-container
+                    .powerstrips-container
                         .dashboard-title Outlets
                         .dashboard-sub-container
-                            .plug-container(ng-repeat="plug in plugs")
+                            .powerstrip-container(ng-repeat="powerstrip in powerstrips")
+                                .row
+                                    .name {{powerstrip.name || 'Unnamed Powerstrip'}}
+                                .row
+                                    .col-xs-6
+                                        .plug-container
+                                            .name
+                                                i.fa.fa-plug
+                                                | {{powerstrip.outlets[0].name || 'Unnamed plug'}}
+                                            .cost
+                                                | $ {{plug.cost || '0.00'}}
+
+                                    .col-xs-6
+                                        .plug-container
+                                            .name
+                                                i.fa.fa-plug
+                                                | {{powerstrip.outlets[1].name || 'Unnamed plug'}}
+                                            .cost
+                                                | $ {{plug.cost || '0.00'}}
 
 
                 .col-md-8
                     .banks-container
-                        .dashboard-title
+                        .dashboard-title Piggy Banks
                         .dashboard-sub-container
                             .bank-container(ng-repeat="bank in banks")
+                                .row
+                                    .col-xs-7
+                                        .name
+                                            i.fa.fa-bank
+                                            | {{bank.name}}
+                                    .col-xs-5
+                                        .balance {{bank.balance}}
+                                .row
+                                    .col-xs-12
+                                        .charges-container
+                                            .charge(ng-repeat="charge in bank.charges") {{charge.amount}}
+
+
 
 
 
