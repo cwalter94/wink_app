@@ -1,5 +1,5 @@
 var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate', 'ui.select',
-    'angular-flash.service', 'angular-flash.flash-alert-directive', 'ui.router', 'mgcrea.ngStrap'], function () {
+    'angular-flash.service', 'angular-flash.flash-alert-directive', 'ui.router', 'ui.bootstrap'], function () {
 
 })
     .config(['uiSelectConfig', 'flashProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider', function (uiSelectConfig, flashProvider, $httpProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider) {
@@ -279,7 +279,6 @@ var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate
     ]);;
 var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'banks', 'userFactory', 'flash', function($scope,powerstrips, banks, userFactory, flash) {
     $scope.powerstrips = powerstrips;
-    console.log($scope.powerstrips);
     $scope.banks = banks;
 
     //load demo data if no powerstrips connected
@@ -343,6 +342,7 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
     }
 
     //load demo data if no piggy banks connected
+
     if ($scope.banks == null) {
         $scope.banks = [
             {
@@ -351,7 +351,12 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                 "balance": 19217,
                 "last_deposit_amount": 25,
                 "nose_color": "00ff00",
-                "savings_goal": 5000
+                "savings_goal": 5000,
+                "charges" : [{
+                    date: Date.now(),
+                    amount:25,
+                    outlet_id: "1tq1-654fed_18y5"
+                }]
             },
             {
                 "piggy_bank_id": "sadjidbbb_201b2",
@@ -359,7 +364,12 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                 "balance": 19217,
                 "last_deposit_amount": 25,
                 "nose_color": "00ff00",
-                "savings_goal": 5000
+                "savings_goal": 5000,
+                "charges" : [{
+                    date: Date.now(),
+                    amount:25,
+                    outlet_id: "1tq1-654fed_18y5"
+                }]
             },
             {
                 "piggy_bank_id": "sadjidbbb_201b3",
@@ -367,7 +377,12 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                 "balance": 19217,
                 "last_deposit_amount": 25,
                 "nose_color": "00ff00",
-                "savings_goal": 5000
+                "savings_goal": 5000,
+                "charges" : [{
+                    date: Date.now(),
+                    amount:25,
+                    outlet_id: "1tq1-654fed_18y5"
+                }]
             },
             {
                 "piggy_bank_id": "sadjidbbb_201b4",
@@ -375,19 +390,20 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                 "balance": 19217,
                 "last_deposit_amount": 25,
                 "nose_color": "00ff00",
-                "savings_goal": 5000
+                "savings_goal": 5000,
+                "charges" : [{
+                    date: Date.now(),
+                    amount:25,
+                    outlet_id: "1tq1-654fed_18y5"
+                }]
             }
 
         ]
     }
 
-    $scope.banks = banks;
-    $scope.addNewPowerstripEnable = false;
-    $scope.newPowerstrip = {
-        name: ''
-    };
+    $scope.newCharge = function(amount) {
 
-
+    }
 }]);;
 var siteCtrl = app.controller('siteCtrl', ['$scope', 'principal', function($scope, principal) {
     $scope.principal = principal;

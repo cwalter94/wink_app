@@ -1,6 +1,5 @@
 var dashboardCtrl = app.controller('dashboardCtrl', function($scope,powerstrips, banks, userFactory, flash) {
     $scope.powerstrips = powerstrips;
-    console.log($scope.powerstrips);
     $scope.banks = banks;
 
     //load demo data if no powerstrips connected
@@ -123,4 +122,7 @@ var dashboardCtrl = app.controller('dashboardCtrl', function($scope,powerstrips,
         ]
     }
 
+    $scope.newCharge = function(amount) {
+
+    }
 });
