@@ -7137,7 +7137,7 @@ html {
               height: 100%; }
               html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container {
                 min-height: 500px;
-                background: #e9e9e9;
+                background: #efefef;
                 border: 1px solid #ccc;
                 padding: 5px; }
                 html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-title, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-title {

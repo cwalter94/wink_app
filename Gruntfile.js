@@ -46,30 +46,19 @@ module.exports = function(grunt) {
             js: {
                 files: [{
                     src: [
-                        'public/bower_components/ng-file-upload/angular-file-upload-html5-shim.min.js',
                         'public/bower_components/angular/angular.min.js',
-                        'public/bower_components/angular-loading-bar/build/loading-bar.min.js',
-                        'public/bower_components/angular-socket-io/socket.js',
-                        'public/bower_components/angular-once/once.js',
-                        'public/bower_components/angular-animate/angular-animate.min.js',
-                        'public/bower_components/angular-strap/dist/angular-strap.min.js',
-                        'public/bower_components/angular-strap/dist/angular-strap.tpl.min.js',
-                        'public/bower_components/ng-file-upload/angular-file-upload.min.js',
-                        'public/js/jquery.min.js',
-                        'public/bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
-                        'public/js/bootstrap.min.js',
+                        'public/bower_components/angular-loading-bar/build/loading-bar.js',
+                        'public/bower_components/angular-animate/angular-animate.js',
                         'public/bower_components/angular-bootstrap/ui-bootstrap.min.js',
                         'public/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+                        'public/bower_components/angular-xeditable/dist/js/xeditable.min.js',
                         'public/bower_components/angular-ui-select/dist/select.min.js',
                         'public/bower_components/angular-flash/dist/angular-flash.min.js',
-                        'public/bower_components/ui-router/release/angular-ui-router.min.js',
-                        'public/bower_components/angular-xeditable/dist/js/xeditable.min.js',
+                        'public/bower_components/angular-ui-router/release/angular-ui-router.min.js',
                         'public/bower_components/angular-ui/build/angular-ui.min.js',
-                        'public/bower_components/angular-cookies/angular-cookies.min.js',
-                        'public/bower_components/angular-ui-utils/ui-utils.min.js',
-                        'public/bower_components/angular-smart-table/dist/smart-table.min.js',
-                        'public/bower_components/angular-scroll-glue/src/scrollglue.js',
-                        'public/js/angular/twerkApp.annotated.js'
+                        'public/bower_components/angular-timer/dist/angular-timer.min.js',
+                        'public/bower_components/angular-ui-utils/ui-utils.js',
+                        'public/js/angular/ngApp.annotated.js'
 
                     ],
                     dest: 'public/js/application.min.js'

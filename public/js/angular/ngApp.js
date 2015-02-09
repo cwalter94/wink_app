@@ -63,7 +63,7 @@ var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate
                                 return null;
                             }
                         }, function(err) {
-                            //$state.transitionTo('site.login');
+                            $state.transitionTo('site.login');
                             return null;
                         })
                     }]
