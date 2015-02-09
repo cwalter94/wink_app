@@ -3,11 +3,11 @@ This app allows users to require money from Piggy Banks in order to turn outlets
 spouses with ESPN-addicted significant others, and energy-conscious households.
 
 <h3> First: a note on data persistence and the Wink API </h3>
-<p> Data is not persistent in this app, as the Wink API has no means of storing things like Outlet Cost, or Piggy Bank deductions. A simple remedy for this would involve setting up a basic DB server using a service like Parse, to store attributes that the Wink API cannot. However, for this implementation no such solution is used, and thus all modifiable data other than Wink User is page-only. </p>
+<p> Data is not persistent in this app, as the Wink API has no means of storing things like Outlet Cost, or Piggy Bank deductions. A simple remedy for this would involve setting up a basic DB server using a service like Parse, to store attributes that the Wink API cannot. However, for this implementation no such solution is used, and thus all modifiable data other than Wink User and plug power state (if plugs are loaded from the API, and not from demo data - this is done automatically by calling the API for powerstrips first, and if there are none returned, demo data is used) is page-only. </p>
 
 <h3> Running localhost </h3>
-<p> After cloning the Git repo, the user needs to run <code> npm install </code> and <code> bower install </code>. 
-If <code>npm</code> is not installed, install it using Homebrew or another system equivalent. Then localhost can be run on port 3000 with the command <code> nodemon app.js </code> from the project root directory.</p>
+<p> After cloning the Git repo, the user needs to run <code>npm install</code> and <code>bower install</code>. 
+If <code>npm</code> is not installed, install it using Homebrew or another system equivalent. Then localhost can be run on port 3000 with the command <code>MIN=1 nodemon app.js</code> from the project root directory. The <code>MIN</code> variable just specifies that minified CSS/JS are desired; leaving it out of the command forces the <code>head.jade</code> file to load all dependencies one by one.</p>
 
 <h3> Directory layout and project structure </h3>
 <p>The stack is comprised of NodeJS + Express + Jade + Angular. Routing is handled on the front-end by Angular-UI-Router, and 
