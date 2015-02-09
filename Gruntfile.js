@@ -29,12 +29,9 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     src: [
-                        'public/font-awesome/css/font-awesome.min.css',
-                        'public/bower_components/angular-ui-select/dist/select.min.css',
-                        'public/bower_components/selectize/dist/css/selectize.default.css',
-                        'public/bower_components/select2/select2.css',
                         'public/bower_components/angular-loading-bar/build/loading-bar.css',
                         'public/css/all.css',
+                        'public/bower_components/angular-xeditable/dist/css/xeditable.css',
                         'public/bower_components/angular-ui/build/angular-ui.min.css'
                     ],
                     dest: 'public/css/application.min.css'

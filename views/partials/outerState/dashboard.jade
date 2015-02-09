@@ -8,41 +8,65 @@
                         .dashboard-sub-container
                             .powerstrip-container(ng-repeat="powerstrip in powerstrips")
                                 .row
-                                    .name {{powerstrip.name || 'Unnamed Powerstrip'}}
+                                    .name(editable-text="powerstrip.name") {{powerstrip.name || 'Unnamed Powerstrip'}}
                                 .row
-                                    .col-xs-6
-                                        .plug-container
-                                            .name
-                                                i.fa.fa-plug
-                                                | {{powerstrip.outlets[0].name || 'Unnamed plug'}}
-                                            .cost
-                                                | $ {{plug.cost || '0.00'}}
-
-                                    .col-xs-6
-                                        .plug-container
-                                            .name
-                                                i.fa.fa-plug
-                                                | {{powerstrip.outlets[1].name || 'Unnamed plug'}}
-                                            .cost
-                                                | $ {{plug.cost || '0.00'}}
+                                    .col-xs-12
+                                        .name(editable-text="powerstrip.outlets[0].name")
+                                            i.fa.fa-plug
+                                            | {{powerstrip.outlets[0].name || 'Unnamed outlet'}}
+                                        .cost(editable-text="powerstrip.outlets[0].rate") $ {{powerstrip.outlets[0].rate || '0.00'}} per hour
+                                .row
+                                    .col-xs-12
+                                        .name(editable-text="powerstrip.outlets[0].name")
+                                            i.fa.fa-plug
+                                            | {{powerstrip.outlets[1].name || 'Unnamed outlet'}}
+                                        .cost(editable-text="powerstrip.outlets[1].rate") $ {{powerstrip.outlets[1].rate || '0.00'}} per hour
 
 
                 .col-md-8
                     .banks-container
                         .dashboard-title Piggy Banks
                         .dashboard-sub-container
-                            .bank-container(ng-repeat="bank in banks")
+                            .bank-container(ng-repeat="bank in banks", ng-class="{'allow-overflow' : bank.newChargeContainerVisible && status.isopen}")
                                 .row
                                     .col-xs-7
                                         .name
-                                            i.fa.fa-bank
                                             | {{bank.name}}
                                     .col-xs-5
-                                        .balance {{bank.balance}}
+                                        .balance.text-right ${{Math.floor(bank.balance/100) + '.' + bank.balance%100}}
                                 .row
                                     .col-xs-12
+                                        .charges-title Outlet Charges
                                         .charges-container
-                                            .charge(ng-repeat="charge in bank.charges") {{charge.amount}}
+                                            .charge(ng-repeat="charge in bank.charges")
+                                                .col-xs-6.text-left {{formatDate(charge)}}
+                                                .col-xs-6.text-right ${{Math.floor(charge.amount/100) + '.' + charge.amount%100}}
+                                        .new-charge-button-container
+                                            button.new-charge-button(ng-click="bank.newChargeContainerVisible = true")
+                                                | Add New Charge
+                                        .new-charge-container(ng-class="{'visible' : bank.newChargeContainerVisible}")
+                                            .col-xs-4.input-col
+                                                .hours-container Hours:
+                                                input.form-control(ng-model="bank.selectedHours")
+                                                .btn-input-container
+                                                    a(ng-click="bank.selectedHours = parseFloat(bank.selectedHours) + 0.5")
+                                                        i.fa.fa-plus
+                                                    a(ng-click="bank.selectedHours = parseFloat(bank.selectedHours) >= 0.5 ? parseFloat(bank.selectedHours) - .5 : parseFloat(bank.selectedHours)")
+                                                        i.fa.fa-minus
+                                            .col-xs-5.select-col
+                                                .btn-group(dropdown is-open="status.isopen")
+                                                    button.btn.dropdown-toggle(dropdown-toggle) {{bank.selectedOutlet ? bank.selectedOutlet.name : 'Select an Outlet'}}
+                                                        span.caret
+                                                    ul.dropdown-menu(role="menu")
+                                                        div(ng-repeat="powerstrip in powerstrips")
+                                                            li(ng-repeat="outlet in powerstrip.outlets", ng-click="bank.selectedOutlet = outlet")
+                                                                a {{outlet.name || 'Unnamed outlet'}}
+
+                                            .col-xs-3.text-right.apply-col
+                                                a
+                                                    i.fa.fa-2x.fa-check(ng-click="newCharge(bank)")
+                                                a
+                                                    i.fa.fa-2x.fa-times(ng-click="bank.newChargeContainerVisible = false;")
 
 
 

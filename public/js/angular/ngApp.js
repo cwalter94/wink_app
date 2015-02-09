@@ -1,5 +1,5 @@
 var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate', 'ui.select',
-    'angular-flash.service', 'angular-flash.flash-alert-directive', 'ui.router', 'ui.bootstrap'], function () {
+    'angular-flash.service', 'angular-flash.flash-alert-directive', 'ui.router', 'ui.bootstrap', 'xeditable'], function () {
 
 })
     .config(function (uiSelectConfig, flashProvider, $httpProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider) {

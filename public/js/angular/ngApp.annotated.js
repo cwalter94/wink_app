@@ -1,5 +1,5 @@
 var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate', 'ui.select',
-    'angular-flash.service', 'angular-flash.flash-alert-directive', 'ui.router', 'ui.bootstrap'], function () {
+    'angular-flash.service', 'angular-flash.flash-alert-directive', 'ui.router', 'ui.bootstrap', 'xeditable'], function () {
 
 })
     .config(['uiSelectConfig', 'flashProvider', '$httpProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider', 'cfpLoadingBarProvider', function (uiSelectConfig, flashProvider, $httpProvider, $stateProvider, $urlRouterProvider, $locationProvider, cfpLoadingBarProvider) {
@@ -278,8 +278,16 @@ var app = angular.module('ngApp', ['ui.utils', 'angular-loading-bar', 'ngAnimate
         }
     ]);;
 var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'banks', 'userFactory', 'flash', function($scope,powerstrips, banks, userFactory, flash) {
+    $scope.formatDate = function(charge) {
+        var date = new Date(charge.date);
+        var month = date.getMonth() + 1;
+        return month + '/' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes();
+    };
+
     $scope.powerstrips = powerstrips;
     $scope.banks = banks;
+    $scope.Math = Math;
+    $scope.parseFloat = parseFloat;
 
     //load demo data if no powerstrips connected
     if ($scope.powerstrips == null) {
@@ -291,13 +299,17 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                       "outlet_id": "1tq1-654fed_18y5",
                       "outlet_index": 0,
                       "powered": true,
-                      "name" : ""
+                      "name" : "Living Room TV",
+                      "rate" : 0.00,
+                      expiration: null
                   },
                   {
                       "outlet_id": "u59h-654fee_ih17af5",
                       "outlet_index": 1,
                       "powered": false,
-                      "name" : ""
+                      "name" : "Living Room Stereo",
+                      "rate" : 0.00,
+                      expiration: null
                   }
               ]
           },
@@ -308,13 +320,17 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                       "outlet_id": "1tq1-654fed_18y6",
                       "outlet_index": 0,
                       "powered": true,
-                      "name" : ""
+                      "name" : "Sally Bedroom TV",
+                      "rate" : 0.00,
+                      expiration: null
                   },
                   {
                       "outlet_id": "u59h-654fee_ih17af6",
                       "outlet_index": 1,
                       "powered": false,
-                      "name" : ""
+                      "name" : "Sally Bedroom Stereo",
+                      "rate" : 0.00,
+                      expiration: null
 
                   }
               ]
@@ -326,14 +342,18 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                       "outlet_id": "1tq1-654fed_18y7",
                       "outlet_index": 0,
                       "powered": true,
-                      "name" : ""
+                      "name" : "Bo Bedroom TV",
+                      "rate" : 0.00,
+                      expiration: null
 
                   },
                   {
                       "outlet_id": "u59h-654fee_ih17af8",
                       "outlet_index": 1,
                       "powered": false,
-                      "name" : ""
+                      "name" : "Bo Bedroom Stereo",
+                      "rate" : 0.00,
+                      expiration: null
 
                   }
               ]
@@ -347,7 +367,7 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
         $scope.banks = [
             {
                 "piggy_bank_id": "sadjidbbb_201b1",
-                "name": "Beer money",
+                "name": "Sally's money",
                 "balance": 19217,
                 "last_deposit_amount": 25,
                 "nose_color": "00ff00",
@@ -356,11 +376,12 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                     date: Date.now(),
                     amount:25,
                     outlet_id: "1tq1-654fed_18y5"
-                }]
+                }],
+                selectedHours: 1
             },
             {
                 "piggy_bank_id": "sadjidbbb_201b2",
-                "name": "Beer money",
+                "name": "Bo's money",
                 "balance": 19217,
                 "last_deposit_amount": 25,
                 "nose_color": "00ff00",
@@ -369,7 +390,8 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                     date: Date.now(),
                     amount:25,
                     outlet_id: "1tq1-654fed_18y5"
-                }]
+                }],
+                selectedHours: 1
             },
             {
                 "piggy_bank_id": "sadjidbbb_201b3",
@@ -382,11 +404,12 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                     date: Date.now(),
                     amount:25,
                     outlet_id: "1tq1-654fed_18y5"
-                }]
+                }],
+                selectedHours: 1
             },
             {
                 "piggy_bank_id": "sadjidbbb_201b4",
-                "name": "Beer money",
+                "name": "Vacation money",
                 "balance": 19217,
                 "last_deposit_amount": 25,
                 "nose_color": "00ff00",
@@ -395,15 +418,27 @@ var dashboardCtrl = app.controller('dashboardCtrl', ['$scope', 'powerstrips', 'b
                     date: Date.now(),
                     amount:25,
                     outlet_id: "1tq1-654fed_18y5"
-                }]
+                }],
+                selectedHours: 1
             }
 
         ]
     }
 
-    $scope.newCharge = function(amount) {
+    $scope.newCharge = function(bank) {
+        bank.charges.push({
+            amount: bank.selectedHours * bank.selectedOutlet.rate,
+            date: Date.now(),
+            outlet_id: bank.selectedOutlet.outlet_id
+        });
+        bank.selectedOutlet.expiration = Date.now() + 3600 * bank.selectedHours;
+        bank.newChargeContainerVisible = false;
+        bank.selectedOutlet = null;
+        bank.selectedHours = 1;
 
-    }
+    };
+
+
 }]);;
 var siteCtrl = app.controller('siteCtrl', ['$scope', 'principal', function($scope, principal) {
     $scope.principal = principal;

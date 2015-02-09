@@ -7137,40 +7137,141 @@ html {
               height: 100%; }
               html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container {
                 min-height: 500px;
-                background: #fbfbfb;
+                background: #fff;
                 border: 1px solid #ccc;
                 padding: 5px; }
                 html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-title, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-title {
                   font-size: 28px;
-                  font-weight: 300; }
+                  font-weight: 300;
+                  color: #ff83e2;
+                  padding-left: 2px; }
                 html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container {
                   height: calc(100% - 50px);
                   overflow-y: scroll; }
                   html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container {
                     margin: 5px auto;
                     padding: 0px 15px;
-                    background: #eee;
+                    background: #ffffff;
                     border: 1px solid #ccc;
                     width: 100%;
                     height: 200px; }
                     html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container .name, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container .name {
-                      padding: 5px;
                       font-size: 20px;
-                      color: #aaa; }
+                      color: #aaa;
+                      border-bottom: none; }
                     html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container .plug-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container .plug-container {
                       width: 100%;
                       height: 100%; }
                       html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container .plug-container .name, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container .plug-container .name {
-                        font-size: 16px; }
+                        font-size: 16px;
+                        border-bottom: none; }
                   html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container {
                     width: calc(50% - 10px);
-                    border: 1px solid #ccc;
-                    background: #ddd;
+                    border: 2px solid #ccc;
+                    border-radius: 3px;
+                    background: #f9f9f9;
                     min-width: 300px;
                     margin: 5px;
                     float: left;
-                    height: 200px;
-                    padding: 5px 15px; }
+                    padding: 5px 15px 0px;
+                    overflow-y: hidden; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container.allow-overflow, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container.allow-overflow {
+                      overflow-y: visible; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .name, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .balance, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .name, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .balance {
+                      font-size: 18px; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .charges-title, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .charges-title {
+                      color: #008dff;
+                      font-size: 12px;
+                      font-weight: 300; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .charges-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .charges-container {
+                      height: 90px;
+                      border: 1px solid #ccc;
+                      background: #fff;
+                      margin-bottom: 5px;
+                      overflow-y: scroll; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .charges-container .charge, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .charges-container .charge {
+                        font-size: 16px; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-button-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-button-container {
+                      width: 100%;
+                      position: relative;
+                      float: left;
+                      height: 50px;
+                      padding: 10px; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-button-container .new-charge-button, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-button-container .new-charge-button {
+                        background: transparent;
+                        border: 1px solid #008dff;
+                        text-align: center;
+                        width: 100%;
+                        height: 100%; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container {
+                      background: #008dff;
+                      height: 50px;
+                      position: absolute;
+                      top: 100%;
+                      margin: 0;
+                      width: 100%;
+                      left: 0;
+                      -webkit-transition: all .5s;
+                      -moz-transition: all .5s;
+                      -ms-transition: all .5s;
+                      -o-transition: all .5s;
+                      transition: all .5s; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container.visible, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container.visible {
+                        top: calc(100% - 50px); }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .select-col, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .apply-col, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .select-col, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .apply-col {
+                        padding: 5px;
+                        text-align: center;
+                        height: 100%; }
+                        html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col button, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .select-col button, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .apply-col button, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col button, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .select-col button, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .apply-col button {
+                          height: 100%;
+                          background: transparent;
+                          color: #fff;
+                          border: 1px solid #008dff; }
+                          html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col button:hover, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col button:focus, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .select-col button:hover, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .select-col button:focus, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .apply-col button:hover, html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .apply-col button:focus, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col button:hover, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col button:focus, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .select-col button:hover, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .select-col button:focus, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .apply-col button:hover, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .apply-col button:focus {
+                            color: #fff; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col .hours-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col .hours-container {
+                        position: absolute;
+                        left: 5px;
+                        top: calc(50% - 12px);
+                        color: #fff;
+                        font-size: 16px; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col input, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col input {
+                        background: #fff;
+                        border: none;
+                        height: 100%;
+                        padding: 2px;
+                        padding-left: 60px;
+                        background: #008dff;
+                        color: #fff;
+                        width: calc(100% - 20px);
+                        height: 100%;
+                        float: left;
+                        font-size: 16px; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container {
+                        float: left;
+                        position: relative;
+                        top: 0;
+                        padding: 0px;
+                        width: 20px;
+                        height: 100%;
+                        background: #008dff; }
+                        html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container a, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container a {
+                          border: none;
+                          background: transparent; }
+                          html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container a:hover, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container a:hover {
+                            border: none;
+                            background: transparent; }
+                          html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container a i, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .input-col .btn-input-container a i {
+                            font-size: 16px;
+                            padding: 5px;
+                            width: 20px;
+                            height: 50%;
+                            color: #fff; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .new-charge-container .apply-col i, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .new-charge-container .apply-col i {
+                        margin: 5px;
+                        color: #fff; }
+              html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container {
+                padding-bottom: 100px; }
         html body .site-container .page-container #login-container, html body .site-container .page-container #register-container {
           height: 100%; }
           html body .site-container .page-container #login-container .form-container, html body .site-container .page-container #register-container .form-container {

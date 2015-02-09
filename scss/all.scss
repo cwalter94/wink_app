@@ -52,14 +52,15 @@ html {
 
               .powerstrips-container, .banks-container {
                 min-height: 500px;
-                background: #fbfbfb;
+                background: #fff;
                 border: 1px solid #ccc;
                 padding: 5px;
 
                 .dashboard-title {
                   font-size: 28px;
                   font-weight: 300;
-
+                  color: $main-pink;
+                  padding-left: 2px;
                 }
 
                 .dashboard-sub-container {
@@ -69,15 +70,15 @@ html {
                   .powerstrip-container {
                     margin: 5px auto;
                     padding: 0px 15px;
-                    background: #eee;
+                    background: #ffffff;
                     border: 1px solid #ccc;
                     width: 100%;
                     height: 200px;
 
                     .name {
-                      padding: 5px;
                       font-size: 20px;
                       color: #aaa;
+                      border-bottom: none;
                     }
 
                     .plug-container {
@@ -86,21 +87,171 @@ html {
 
                       .name {
                         font-size: 16px;
+                        border-bottom: none;
                       }
                     }
                   }
 
                   .bank-container {
                     width: calc(50% - 10px);
-                    border: 1px solid #ccc;
-                    background: #ddd;
+                    border: 2px solid #ccc;
+                    border-radius: 3px;
+                    background: #f9f9f9;
                     min-width: 300px;
                     margin: 5px;
                     float: left;
-                    height: 200px;
-                    padding: 5px 15px;
+                    padding: 5px 15px 0px;
+                    overflow-y: hidden;
+
+                    &.allow-overflow {
+                      overflow-y: visible;
+                    }
+
+                    .name, .balance {
+                      font-size: 18px;
+                    }
+                    .charges-title {
+                      color: $main-blue;
+                      font-size: 12px;
+                      font-weight: 300;
+                    }
+
+                    .charges-container {
+                      height: 90px;
+                      border: 1px solid #ccc;
+                      background: #fff;
+                      margin-bottom: 5px;
+                      overflow-y: scroll;
+
+                      .charge {
+                        font-size: 16px;
+                      }
+
+
+                    }
+
+                    .new-charge-button-container {
+                      width: 100%;
+                      position: relative;
+                      float: left;
+                      height: 50px;
+                      padding: 10px;
+
+                      .new-charge-button {
+                        background: transparent;
+                        border: 1px solid $main-blue;
+                        text-align: center;
+                        width: 100%;
+                        height: 100%;
+                      }
+                    }
+
+                    .new-charge-container {
+                      background: $main-blue;
+                      height: 50px;
+                      position: absolute;
+                      top: 100%;
+                      margin: 0;
+                      width: 100%;
+                      left: 0;
+
+                      -webkit-transition: all .5s;
+                      -moz-transition: all .5s;
+                      -ms-transition: all .5s;
+                      -o-transition: all .5s;
+                      transition: all .5s;
+
+                      &.visible {
+                        top: calc(100% - 50px);
+                      }
+
+
+                      .input-col, .select-col, .apply-col {
+                        padding: 5px;
+                        text-align: center;
+                        height: 100%;
+
+                        button {
+                          height: 100%;
+                          background: transparent;
+                          color: #fff;
+                          border: 1px solid $main-blue;
+
+                          &:hover, &:focus {
+                            color: #fff;
+                          }
+                        }
+                      }
+
+                      .input-col {
+                        .hours-container {
+                          position: absolute;
+                          left: 5px;
+                          top: calc(50% - 12px);
+                          color: #fff;
+                          font-size: 16px;
+                        }
+
+                        input {
+                          background: #fff;
+                          border: none;
+                          height: 100%;
+                          padding: 2px;
+                          padding-left: 60px;
+                          background: $main-blue;
+                          color: #fff;
+                          width: calc(100% - 20px);
+                          height: 100%;
+                          float: left;
+                          font-size: 16px;
+                        }
+
+                        .btn-input-container {
+                          float: left;
+                          position: relative;
+                          top: 0;
+                          padding: 0px;
+                          width: 20px;
+                          height: 100%;
+                          background: $main-blue;
+                          a {
+                            border: none;
+                            background: transparent;
+
+                            &:hover {
+                              border: none;
+                              background: transparent;
+                            }
+
+                            i {
+                              font-size: 16px;
+                              padding: 5px;
+                              width: 20px;
+                              height: 50%;
+                              color: #fff;
+                            }
+                          }
+
+                        }
+                      }
+
+                      .apply-col {
+                        i {
+                          margin: 5px;
+                          color: #fff;
+                        }
+                      }
+                    }
+
 
                   }
+                }
+              }
+
+              .banks-container {
+                .dashboard-sub-container {
+                  padding-bottom: 100px;
+
                 }
               }
             }
