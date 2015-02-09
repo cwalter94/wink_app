@@ -3,12 +3,8 @@
 .input, .input-lg {
   border-radius: 2px;
 
-  &:hover {
+  &:hover, &:focus {
     border-color: $main-pink;
+    box-shadow: none;
   }
-}
-
-.btn {
-  background: #ddd;
-  color: #fff;
 }

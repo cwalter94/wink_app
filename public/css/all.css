@@ -249,8 +249,8 @@ th {
     border: 1px solid #ddd !important; } }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+  src: url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot");
+  src: url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 
 .glyphicon {
   position: relative;
@@ -5296,14 +5296,13 @@ button.close {
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   border-radius: 2px; }
-  .input:hover, .input-lg:hover, .form-horizontal .form-group-lg .form-control:hover, .input-group-lg > .form-control:hover,
+  .input:hover, .input:focus, .input-lg:hover, .form-horizontal .form-group-lg .form-control:hover, .input-group-lg > .form-control:hover,
   .input-group-lg > .input-group-addon:hover,
-  .input-group-lg > .input-group-btn > .btn:hover {
-    border-color: #ff83e2; }
-
-.btn {
-  background: #ddd;
-  color: #fff; }
+  .input-group-lg > .input-group-btn > .btn:hover, .input-lg:focus, .form-horizontal .form-group-lg .form-control:focus, .input-group-lg > .form-control:focus,
+  .input-group-lg > .input-group-addon:focus,
+  .input-group-lg > .input-group-btn > .btn:focus {
+    border-color: #ff83e2;
+    box-shadow: none; }
 
 /*!
  *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -7105,7 +7104,8 @@ html {
   margin: 0px;
   width: 100%;
   height: 100%;
-  overflow: scroll; }
+  overflow: scroll;
+  /* add warning colors to warn class */ }
   html body {
     padding: 0px;
     margin: 0px;
@@ -7129,7 +7129,7 @@ html {
         html body .site-container .page-container #dashboard-container {
           height: 100%; }
           html body .site-container .page-container #dashboard-container .bg-cover {
-            background: white; }
+            background: #FFF; }
           html body .site-container .page-container #dashboard-container .container {
             height: 100%;
             padding-top: 50px; }
@@ -7137,7 +7137,7 @@ html {
               height: 100%; }
               html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container {
                 min-height: 500px;
-                background: #fff;
+                background: #e9e9e9;
                 border: 1px solid #ccc;
                 padding: 5px; }
                 html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-title, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-title {
@@ -7150,26 +7150,31 @@ html {
                   overflow-y: scroll; }
                   html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container {
                     margin: 5px auto;
-                    padding: 0px 15px;
+                    padding: 0px 15px 5px;
                     background: #ffffff;
                     border: 1px solid #ccc;
                     width: 100%;
-                    height: 200px; }
+                    height: auto; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container > .row, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container > .row {
+                      margin-top: 10px; }
                     html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container .name, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container .name {
                       font-size: 20px;
                       color: #aaa;
-                      border-bottom: none; }
+                      border-bottom: none;
+                      padding-left: 5px; }
+                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container .name i, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container .name i {
+                        margin-right: 5px; }
+                    html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container timer span, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container timer span {
+                      font-size: 18px;
+                      color: #008dff; }
                     html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container .plug-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container .plug-container {
                       width: 100%;
                       height: 100%; }
-                      html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .powerstrip-container .plug-container .name, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .powerstrip-container .plug-container .name {
-                        font-size: 16px;
-                        border-bottom: none; }
                   html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container {
                     width: calc(50% - 10px);
                     border: 2px solid #ccc;
                     border-radius: 3px;
-                    background: #f9f9f9;
+                    background: #fff;
                     min-width: 300px;
                     margin: 5px;
                     float: left;
@@ -7185,7 +7190,7 @@ html {
                       font-weight: 300; }
                     html body .site-container .page-container #dashboard-container .container > .row .powerstrips-container .dashboard-sub-container .bank-container .charges-container, html body .site-container .page-container #dashboard-container .container > .row .banks-container .dashboard-sub-container .bank-container .charges-container {
                       height: 90px;
-                      border: 1px solid #ccc;
+                      border: 1px solid #008dff;
                       background: #fff;
                       margin-bottom: 5px;
                       overflow-y: scroll; }
@@ -7291,8 +7296,7 @@ html {
               font-size: 18px;
               color: #fff; }
               html body .site-container .page-container #login-container .form-container .btn-login:hover, html body .site-container .page-container #register-container .form-container .btn-login:hover {
-                border: 1px solid #ff83e2;
-                color: #ff83e2; }
+                border: 1px solid #ff83e2; }
         html body .site-container .page-container #home-container {
           height: 100%; }
           html body .site-container .page-container #home-container .bg-cover {
@@ -7313,11 +7317,50 @@ html {
             width: 70%;
             margin: auto;
             color: #777; }
+          html body .site-container .page-container #home-container .btn-home {
+            width: 200px;
+            height: 50px;
+            border: 2px solid #008dff;
+            margin: 10px auto;
+            text-align: center;
+            font-size: 24px;
+            color: #008dff;
+            font-weight: 300;
+            cursor: pointer; }
       html body .site-container .navbar {
         background: #fff; }
         html body .site-container .navbar li a {
           color: #ff83e2; }
         html body .site-container .navbar .navbar-brand {
           color: #ff83e2; }
+  html .fade {
+    display: none; }
+    html .fade.in {
+      display: block !important; }
+  html .alert-flash {
+    display: block;
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid transparent;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    /* change transition property to all */
+    -webkit-transition-property: all;
+    transition-property: all; }
+  html .alert-flash h4 {
+    margin: 0; }
+  html .alert-flash .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    line-height: 20px; }
+  html .alert-warn {
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5; }
+  html .alert-warn,
+  html .alert-warn h4 {
+    color: #c09853; }
   html a {
     cursor: pointer; }

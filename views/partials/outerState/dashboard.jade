@@ -1,6 +1,11 @@
 #dashboard-container
     .bg-cover
         .container
+            .fade(flash-alert="success", active-class="in alert")
+                .alert-message {{flash.message}}
+            .fade(flash-alert="error", active-class="in alert")
+                .alert-message {{flash.message}}
+
             .row
                 .col-md-4
                     .powerstrips-container
@@ -11,17 +16,26 @@
                                     .name(editable-text="powerstrip.name") {{powerstrip.name || 'Unnamed Powerstrip'}}
                                 .row
                                     .col-xs-12
-                                        .name(editable-text="powerstrip.outlets[0].name")
-                                            i.fa.fa-plug
-                                            | {{powerstrip.outlets[0].name || 'Unnamed outlet'}}
+                                        .row
+                                            .col-xs-8
+                                                .name(editable-text="powerstrip.outlets[0].name")
+                                                    i.fa.fa-plug
+                                                    | {{powerstrip.outlets[0].name || 'Unnamed outlet'}}
+                                            .col-xs-4.text-right
+                                                timer(ng-if="powerstrip.outlets[0].expiration", end-time="powerstrip.outlets[0].expiration") {{hours}}:{{mminutes}}:{{sseconds}}
                                         .cost(editable-text="powerstrip.outlets[0].rate") $ {{powerstrip.outlets[0].rate || '0.00'}} per hour
                                 .row
                                     .col-xs-12
-                                        .name(editable-text="powerstrip.outlets[0].name")
-                                            i.fa.fa-plug
-                                            | {{powerstrip.outlets[1].name || 'Unnamed outlet'}}
-                                        .cost(editable-text="powerstrip.outlets[1].rate") $ {{powerstrip.outlets[1].rate || '0.00'}} per hour
-
+                                        .row
+                                            .col-xs-8
+                                                .name(editable-text="powerstrip.outlets[0].name")
+                                                    i.fa.fa-plug
+                                                    | {{powerstrip.outlets[1].name || 'Unnamed outlet'}}
+                                            .col-xs-4.text-right
+                                                timer(ng-if="powerstrip.outlets[1].expiration", end-time="powerstrip.outlets[1].expiration") {{hours}}:{{mminutes}}:{{sseconds}}
+                                        .row
+                                            .col-xs-12
+                                                .cost(editable-text="powerstrip.outlets[1].rate") $ {{powerstrip.outlets[1].rate || '0.00'}} per hour
 
                 .col-md-8
                     .banks-container
